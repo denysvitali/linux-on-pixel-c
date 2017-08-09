@@ -1,7 +1,7 @@
 # Linux on Pixel C
 This repo aims at documenting how to run GNU/Linux on a [Google Pixel C](https://en.wikipedia.org/wiki/Pixel_C) (2015) device.
 
-![Pixel C running Arch Linux ARM]
+![Pixel C running Arch Linux ARM](/images/intro.jpg)
 
 ## Introduction
 ### What is the Google Pixel C?
@@ -53,7 +53,7 @@ Use the IP to log-in
 
 ## Running Linux on your Pixel C
 
-**WARNING:** you need dm-verity and encryption OFF, or a newly formatted /data partion. Otherwise the system won't be able to boot into Linux.
+**WARNING:** you need dm-verity and encryption OFF, or a newly formatted `/data` partion. Otherwise the system won't be able to boot into Linux.
 
 ### Prepare the filesystem
 
@@ -71,6 +71,9 @@ wget https://ded1.denv.it/pixel-c/Image.fit -O ~/kernel/Image.fit
 wget https://ded1.denv.it/pixel-c/ramdisk.gz -O ~/kernel/ramdisk.gz
 fastboot boot ~/kernel/Image.fit ~/kernel/ramdisk.gz
 ```
+
+#### Ramdisk
+Ramdisk is available at
 
 ### From sources
 
@@ -99,6 +102,8 @@ make -j$(nproc)
 wget https://ded1.denv.it/pixel-c/ramdisk.gz -O /kernel/ramdisk.gz
 ```
 
+For the last command, you can use your own ramdisk, or compile it from my [source]().
+
 ### Mounting the kernel dir
 Mount the `kernel` dir in your home:
 ```
@@ -110,3 +115,14 @@ sudo mount -o bind /var/lib/docker/volumes/kernel/_data ~/kernel
 ```
 sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 ```
+
+# Contributors
+ - [Samt43](https://github.com/Samt43), original author of the project
+
+# Support the project
+## Donate to the major contributors of this project
+ - [Donate to Mathieu Tournier, aka Samt434](http://paypal.me/MathieuTournier)  
+ - [Donate to Denys Vitali, aka denvit](http://paypal.me/denvit)   
+
+## Don't like to donate money to strangers?
+Donate some money to the [Linux Foundation](https://www.linuxfoundation.org/about/linux-donate) or the [EFF](https://supporters.eff.org/donate).
