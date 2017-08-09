@@ -131,9 +131,13 @@ sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 ```
 
 # Resources
-[Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)  
-[Thierry's Blog: Booting a Pixel C tablet with a custom kernel](http://tescande.blogspot.ch/2016/12/booting-pixel-c-tablet-with-custom.html)  
-[Git at Google: Kernel for Tegra](https://android.googlesource.com/kernel/tegra/+/android-o-preview-4_r0.1)  
+[Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)
+[Thierry's Blog: Booting a Pixel C tablet with a custom kernel](http://tescande.blogspot.ch/2016/12/booting-pixel-c-tablet-with-custom.html)
+[Git at Google: Kernel for Tegra](https://android.googlesource.com/kernel/tegra/+/android-o-preview-4_r0.1)
+[GitHub: Mathieu's Kernel for Smaug (4.11-RC1)](https://github.com/Samt43/linux/tree/Smaug_kernel_RC1)
+[GitHub: Mathieu's Ramdisk](https://github.com/Samt43/Smaug)
+[GitHub: My Kernel for Smaug (4.13-RC4)](https://github.com/denysvitali/linux-smaug)
+[GitHub: My initramfs](https://github.com/denysvitali/smaug-custom-initram)
 
 # Contributors
  - [Samt43](https://github.com/Samt43), original author of the project
