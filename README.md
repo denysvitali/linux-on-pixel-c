@@ -88,7 +88,6 @@ Don't put yourself in danger, we still need you.
 
 ### From prebuilt images
 ~~Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing~~
-~~
 
 Prebuilt images are available [here](https://github.com/denysvitali/linux-smaug/releases), just flash the latest boot.img with the following command
 ```
