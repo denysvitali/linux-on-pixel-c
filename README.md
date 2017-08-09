@@ -59,12 +59,27 @@ Use the IP to log-in
 
 ### Prepare the filesystem
 
+[Download here](https://ded1.denv.it/pixel-c/arch-xfce-lightdm.tar.gz) my custom-made filesystem (3GB), or set up your own using the [official ALARM rootfs](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz).    
+
+*Be aware that the official ALARM rootfs requires an USB Ethernet adapter since the Wireless connection to a "PixelC" hotspot isn't preconfigured. You will also need to configure your Desktop Manager and your Sessions, all without seeing anything on the screen.*
+
+#### Default login for my custom-made FS:  
+
+  | Username | Password   |
+  |----------| ---------- |
+  | alarm    | pixelcalarm |
+
+#### Default login for the original ALARM rootfs:
+  | Username | Password   |
+  |----------| ---------- |
+  | alarm    | alarm |
+
+### Extract the filesystem
+
 1. Boot in TWRP
-2. `adb push filesystem.img /data/`
+2. `adb push arch-xfce-lightdm.tar.gz /data/`
 3. `cd /data`
-4. `mkdir Arch`
-5. `mount /data/filesystem.img /mnt`
-6. `cp -rp /mnt/* /data/Arch`
+4. `tar -xvf arch-xfce-lightdm.tar.gz`
 
 ### From prebuilt images
 Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing
