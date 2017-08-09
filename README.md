@@ -89,9 +89,6 @@ wget https://ded1.denv.it/pixel-c/ramdisk.gz -O ~/kernel/ramdisk.gz
 fastboot boot ~/kernel/Image.fit ~/kernel/ramdisk.gz
 ```
 
-#### Ramdisk
-Ramdisk is available at
-
 ### From sources
 
 #### Requirements
