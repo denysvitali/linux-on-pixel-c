@@ -55,10 +55,10 @@ Use the IP to log-in
 
 ## Running Linux on your Pixel C
 
-**WARNING:** You may void your warranty. I am not responsible for bricked devices, dead SD cards, or thermonuclear wars. Seriously though, if after a kernel modification you've made, the device gets too hot: you probably messed up with the thermal sensor and you may need to consider a force shutdown (by pressing Power + Vol- until the device powers itself off) before any damage may appear. Whilst I played around with my Pixel C on my own and never had any problem whatsoever, you may not be as lucky as I was. 
-If you are not sure about a modification you've made, keep the device monitored.  
-Don't put yourself in danger, we still need you. 
-     
+**WARNING:** You may void your warranty. I am not responsible for bricked devices, dead SD cards, or thermonuclear wars. Seriously though, if after a kernel modification you've made, the device gets too hot: you probably messed up with the thermal sensor and you may need to consider a force shutdown (by pressing Power + Vol- until the device powers itself off) before any damage may appear. Whilst I played around with my Pixel C on my own and never had any problem whatsoever, you may not be as lucky as I was.
+If you are not sure about a modification you've made, keep the device monitored.
+Don't put yourself in danger, we still need you.
+
 **WARNING:** you need dm-verity and encryption OFF, or a newly formatted `/data` partion. Otherwise the system won't be able to boot into Linux.
 
 
@@ -87,11 +87,13 @@ Don't put yourself in danger, we still need you.
 4. `tar -xvf arch-xfce-lightdm.tar.gz`
 
 ### From prebuilt images
-Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing
+~~Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing~~
+~~
+
+Prebuilt images are available [here](https://github.com/denysvitali/linux-smaug/releases), just flash the latest boot.img with the following command
 ```
-wget https://ded1.denv.it/pixel-c/Image.fit -O ~/kernel/Image.fit
-wget https://ded1.denv.it/pixel-c/ramdisk.gz -O ~/kernel/ramdisk.gz
-fastboot boot ~/kernel/Image.fit ~/kernel/ramdisk.gz
+fastboot flash boot boot.img
+fastboot boot boot.img
 ```
 
 ### From sources
@@ -136,20 +138,20 @@ sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 ```
 
 ## Boot
-If your screen looks like this after booting the image, wonderful! It means that it is booting (don't be scared about the static).  
-  
-*I honestly was really scared at first, but don't worry, if my Pixel C didn't die after all I did, this won't be harmful*  
+If your screen looks like this after booting the image, wonderful! It means that it is booting (don't be scared about the static).
+
+*I honestly was really scared at first, but don't worry, if my Pixel C didn't die after all I did, this won't be harmful*
 
 ![Static showing on Pixel C](/images/static.jpg)
 
 # Resources
-[Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)  
-[Thierry's Blog: Booting a Pixel C tablet with a custom kernel](http://tescande.blogspot.ch/2016/12/booting-pixel-c-tablet-with-custom.html)  
-[Git at Google: Kernel for Tegra](https://android.googlesource.com/kernel/tegra/+/android-o-preview-4_r0.1)  
-[GitHub: Mathieu's Kernel for Smaug (4.11-RC1)](https://github.com/Samt43/linux/tree/Smaug_kernel_RC1)  
-[GitHub: Mathieu's Ramdisk](https://github.com/Samt43/Smaug)  
-[GitHub: My Kernel for Smaug (4.13-RC4)](https://github.com/denysvitali/linux-smaug)  
-[GitHub: My initramfs](https://github.com/denysvitali/smaug-custom-initram)  
+[Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)
+[Thierry's Blog: Booting a Pixel C tablet with a custom kernel](http://tescande.blogspot.ch/2016/12/booting-pixel-c-tablet-with-custom.html)
+[Git at Google: Kernel for Tegra](https://android.googlesource.com/kernel/tegra/+/android-o-preview-4_r0.1)
+[GitHub: Mathieu's Kernel for Smaug (4.11-RC1)](https://github.com/Samt43/linux/tree/Smaug_kernel_RC1)
+[GitHub: Mathieu's Ramdisk](https://github.com/Samt43/Smaug)
+[GitHub: My Kernel for Smaug (4.13-RC4)](https://github.com/denysvitali/linux-smaug)
+[GitHub: My initramfs](https://github.com/denysvitali/smaug-custom-initram)
 
 # Contributors
  - [Samt43](https://github.com/Samt43), original author of the project
