@@ -55,7 +55,12 @@ Use the IP to log-in
 
 ## Running Linux on your Pixel C
 
+**WARNING:** You may void your warranty. I am not responsible for bricked devices, dead SD cards, or thermonuclear wars. Seriously though, if after a kernel modification you've made, the device gets too hot: you probably messed up with the thermal sensor and you may need to consider a force shutdown (by pressing Power + Vol- until the device powers itself off) before any damage may appear. Whilst I played around with my Pixel C on my own and never had any problem whatsoever, you may not be as lucky as I was. 
+If you are not sure about a modification you've made, keep the device monitored.  
+Don't put yourself in danger, we still need you. 
+     
 **WARNING:** you need dm-verity and encryption OFF, or a newly formatted `/data` partion. Otherwise the system won't be able to boot into Linux.
+
 
 ### Prepare the filesystem
 
@@ -129,6 +134,13 @@ sudo mount -o bind /var/lib/docker/volumes/kernel/_data ~/kernel
 ```
 sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 ```
+
+## Boot
+If your screen looks like this after booting the image, wonderful! It means that it is booting (don't be scared about the static).  
+  
+*I honestly was really scared at first, but don't worry, if my Pixel C didn't die after all I did, this won't be harmful*  
+
+![Static showing on Pixel C](/images/static.jpg)
 
 # Resources
 [Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)  
