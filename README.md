@@ -5,8 +5,8 @@ This repo aims at documenting how to run GNU/Linux on a [Google Pixel C](https:/
 
 ## Introduction
 ### What is the Google Pixel C?
-The Pixel C is a 10.2 inch Android tablet, made by Google, which was released on December 8, 2015.  
-It didn't had much success apparently, but its hardware is definitively still a flagship killer.  
+The Pixel C is a 10.2 inch Android tablet, made by Google, which was released on December 8, 2015.
+It didn't had much success apparently, but its hardware is definitively still a flagship killer.
 
 Unfortunately it runs Android, which doesn't seem to be really a productive / development oriented operating system, therefore we decided to port a Linux distro to it, to make it more productive and fast.
 
@@ -26,7 +26,7 @@ We are still in an early pre-alpha stage, the device boots with the latest kerne
  - GNOME doesn't seem to work with Arch Linux ARM for aarch64 (but works with Alarm armv7)
  - Pixel C Keyboard doesn't work (need BT LE, which is provided by bcm4354)
  - Physical buttons don't work (detected, but the events aren't properly coded in libevent)
- - [Random green bars](/issues/green-bars.md)  
+ - [Random green bars](/issues/green-bars.md)
 
 You can follow the issues [here](https://github.com/denysvitali/linux-on-pixel-c/issues): if you happen to know how to solve one of these problems, please help us! Even the smallest comment may bring us one step forward.
 
@@ -59,11 +59,11 @@ Use the IP to log-in
 
 ### Prepare the filesystem
 
-[Download here](https://ded1.denv.it/pixel-c/arch-xfce-lightdm.tar.gz) my custom-made filesystem (3GB), or set up your own using the [official ALARM rootfs](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz).    
+[Download here](https://ded1.denv.it/pixel-c/arch-xfce-lightdm.tar.gz) my custom-made filesystem (3GB), or set up your own using the [official ALARM rootfs](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz).
 
 *Be aware that the official ALARM rootfs requires an USB Ethernet adapter since the Wireless connection to a "PixelC" hotspot isn't preconfigured. You will also need to configure your Desktop Manager and your Sessions, all without seeing anything on the screen.*
 
-#### Default login for my custom-made FS:  
+#### Default login for my custom-made FS:
 
   | Username | Password   |
   |----------| ---------- |
@@ -92,12 +92,12 @@ fastboot boot ~/kernel/Image.fit ~/kernel/ramdisk.gz
 ### From sources
 
 #### Requirements
- - Docker  
+ - Docker
 
 #### Preparation
 Pull the [dvitali/android-build-tools](https://hub.docker.com/r/dvitali/android-build-tools/) image with `docker pull dvitali/android-build-tools` or build it yourself from [this repository](https://github.com/denysvitali/docker-android-build-tools).
 
-Run the container with:  
+Run the container with:
 `docker run -v kernel:/kernel -it dvitali/android-build-tools:latest`
 
 This will give you a shell (zsh) from where you can compile the kernel - all the necessary tools are there.
@@ -130,13 +130,18 @@ sudo mount -o bind /var/lib/docker/volumes/kernel/_data ~/kernel
 sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 ```
 
+# Resources
+[Arch Linux Forums: How to compile the Pixel C Kernel](https://bbs.archlinux.org/viewtopic.php?pid=1594095#p1594095)  
+[Thierry's Blog: Booting a Pixel C tablet with a custom kernel](http://tescande.blogspot.ch/2016/12/booting-pixel-c-tablet-with-custom.html)  
+[Git at Google: Kernel for Tegra](https://android.googlesource.com/kernel/tegra/+/android-o-preview-4_r0.1)  
+
 # Contributors
  - [Samt43](https://github.com/Samt43), original author of the project
 
 # Support the project
 ## Donate to the major contributors of this project
- - [Donate to Mathieu Tournier, aka Samt434](http://paypal.me/MathieuTournier)  
- - [Donate to Denys Vitali, aka denvit](http://paypal.me/denvit)   
+ - [Donate to Mathieu Tournier, aka Samt434](http://paypal.me/MathieuTournier)
+ - [Donate to Denys Vitali, aka denvit](http://paypal.me/denvit)
 
 ## Don't like to donate money to strangers?
 Donate some money to the [Linux Foundation](https://www.linuxfoundation.org/about/linux-donate) or the [EFF](https://supporters.eff.org/donate).
