@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Stops the sequence (Google colors) to use our own
+
+LOGPATH=/
+rgb=/sys/class/chromeos/cros_ec/lightbar/led_rgb
+
+if [ -e $rgb ]; then
+	echo "STOP" > /sys/class/chromeos/cros_ec/lightbar/sequence;
+fi
+function set_arch_light_blue {
+	if [ -e $rgb ]; then
+		echo "0 0 255 255 1 0 255 255 2 0 255 255 3 0 255 255" > /sys/class/chromeos/cros_ec/lightbar/led_rgb;
+	fi
+}
+
+function set_orange {
+	if [ -e $rgb ]; then
+		echo "0 255 149 0 1 255 149 0 2 255 149 0 3 255 149 0" > /sys/class/chromeos/cros_ec/lightbar/led_rgb;
+	fi
+}
+
+function set_dark_blue {
+	if [ -e $rgb ]; then
+		echo "0 0 0 255 1 0 0 255 2 0 0 255 3 0 0 255" > /sys/class/chromeos/cros_ec/lightbar/led_rgb;
+	fi
+}
+
+function log_infos {
+	dmesg > ${LOGPATH}dmesg-3.txt;
+	journalctl -xe > ${LOGPATH}log-journalctl.txt;
+	lsusb > ${LOGPATH}log-lsusb.txt;
+	lspci > ${LOGPATH}log-lspci.txt;
+	ip addr > ${LOGPATH}log-ip-addr.txt;
+	tree /sys/class/ > ${LOGPATH}tree-sys.txt;
+}
+
+log_infos
+set_arch_light_blue
+
+# Stop LightDM, then start it again after 2 seconds. This allows us to see the lightdm greeter instead of the "static" screen
+
+systemctl stop lightdm
+sleep 2
+systemctl start lightdm
+
+set_dark_blue # Booted succesfully!
+
+sleep 5
+
+set_arch_light_blue # "Permanently" set the lightbar color to Arch Light Blue
