@@ -1,11 +1,13 @@
 # Linux on Pixel C
 This repo aims at documenting how to run GNU/Linux on a [Google Pixel C](https://en.wikipedia.org/wiki/Pixel_C) (2015) device.
 
+![Pixel C running Arch Linux ARM]
+
 ## Introduction
 ### What is the Google Pixel C?
 The Pixel C is a 10.2 inch Android tablet, made by Google, which was released on December 8, 2015.  
 It didn't had much success apparently, but its hardware is definitively still a flagship killer.  
-  
+
 Unfortunately it runs Android, which doesn't seem to be really a productive / development oriented operating system, therefore we decided to port a Linux distro to it, to make it more productive and fast.
 
 ### What distro are currently supported?
@@ -24,6 +26,7 @@ We are still in an early pre-alpha stage, the device boots with the latest kerne
  - GNOME doesn't seem to work with Arch Linux ARM for aarch64 (but works with Alarm armv7)
  - Pixel C Keyboard doesn't work (need BT LE, which is provided by bcm4354)
  - Physical buttons don't work (detected, but the events aren't properly coded in libevent)
+ - [Random green bars](/issues/green-bars.md)
 
 ### What works?
  - Boots!
@@ -38,7 +41,7 @@ We are still in an early pre-alpha stage, the device boots with the latest kerne
 
  - Google Pixel C (2015)
  - USB Type-C HUB (I'm personally using [this](https://www.amazon.com/HooToo-Adapter-Charging-MacBook-Chromebook/dp/B01K7C53K2))
- - USB Wi-Fi Adapter (only a few are supported, I personally use [this](http://www.ebay.com/itm/150Mbps-Mini-USB-WiFi-Wireless-Adapter-Dongle-Network-LAN-Card-802-11n-g-b-PC-/252404008603) one) or: 
+ - USB Wi-Fi Adapter (only a few are supported, I personally use [this](http://www.ebay.com/itm/150Mbps-Mini-USB-WiFi-Wireless-Adapter-Dongle-Network-LAN-Card-802-11n-g-b-PC-/252404008603) one) or:
  - USB Ethernet Adapter (any model should work)
 
 ### Using an USB Wi-FI adapter
@@ -62,27 +65,48 @@ Use the IP to log-in
 6. `cp -rp /mnt/* /data/Arch`
 
 ### From prebuilt images
-The prebuilt images aren't yet available.
+Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing
 ```
-fastboot boot boot.img
+wget https://ded1.denv.it/pixel-c/Image.fit -O ~/kernel/Image.fit
+wget https://ded1.denv.it/pixel-c/ramdisk.gz -O ~/kernel/ramdisk.gz
+fastboot boot ~/kernel/Image.fit ~/kernel/ramdisk.gz
 ```
 
 ### From sources
-WIP
-...
 
-Cross compile for aarch64:
-[Source](https://github.com/denysvitali/linux-smaug)
- 
-Inside Docker:
+#### Requirements
+ - Docker  
+
+#### Preparation
+Pull the [dvitali/android-build-tools](https://hub.docker.com/r/dvitali/android-build-tools/) image with `docker pull dvitali/android-build-tools` or build it yourself from [this repository](https://github.com/denysvitali/docker-android-build-tools).
+
+Run the container with:  
+`docker run -v kernel:/kernel -it dvitali/android-build-tools:latest`
+
+This will give you a shell (zsh) from where you can compile the kernel - all the necessary tools are there.
+
+If you need another shell, just do `docker exec -it containerName zsh` (where `containerName` is the name of the container, which can be found with `docker ps`)
+
+#### Compilation
+
+Run the following commands in the docker container:
 ```
+cd /kernel
+git clone https://github.com/denysvitali/linux-smaug/ -b linux-4.13-rc4 linux-smaug
 cd linux-smaug/
 make -j$(nproc)
 ./build-image.sh
+wget https://ded1.denv.it/pixel-c/ramdisk.gz -O /kernel/ramdisk.gz
 ```
 
-Outside Docker:
+### Mounting the kernel dir
+Mount the `kernel` dir in your home:
 ```
-sudo fastboot boot linux-smaug/Image.fit ramdisk.gz
+mkdir ~/kernel
+sudo mount -o bind /var/lib/docker/volumes/kernel/_data ~/kernel
 ```
 
+### Flashing the image
+```
+sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
+```
