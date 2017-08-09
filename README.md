@@ -19,14 +19,16 @@ We are still in an early pre-alpha stage, the device boots with the latest kerne
 ### What are the issues right now?
 
  - Wi-Fi / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)
- - Graphics Acceleration doesn't work
+ - Graphics Acceleration doesn't work, everything is rendered by the CPU apparently
  - Sound doesn't work
  - There is no output until the device is booted
  - (Lightbar control isn't exposed on 4.13+, may be a config issue)
  - GNOME doesn't seem to work with Arch Linux ARM for aarch64 (but works with Alarm armv7)
  - Pixel C Keyboard doesn't work (need BT LE, which is provided by bcm4354)
  - Physical buttons don't work (detected, but the events aren't properly coded in libevent)
- - [Random green bars](/issues/green-bars.md)
+ - [Random green bars](/issues/green-bars.md)  
+
+You can follow the issues [here](https://github.com/denysvitali/linux-on-pixel-c/issues): if you happen to know how to solve one of these problems, please help us! Even the smallest comment may bring us one step forward.
 
 ### What works?
  - Boots!
@@ -126,3 +128,6 @@ sudo fastboot boot ~/kernel/linux-smaug/Image.fit ~/kernel/ramdisk.gz
 
 ## Don't like to donate money to strangers?
 Donate some money to the [Linux Foundation](https://www.linuxfoundation.org/about/linux-donate) or the [EFF](https://supporters.eff.org/donate).
+
+## Don't have money to spend?
+Give us some help by solving [some of the issues](https://github.com/denysvitali/linux-on-pixel-c/issues)! The more we are working on this project, the faster we could all enjoy the Linux experience on our tablets!
