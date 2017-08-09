@@ -164,3 +164,6 @@ Donate some money to the [Linux Foundation](https://www.linuxfoundation.org/abou
 
 ## Don't have money to spend?
 Give us some help by solving [some of the issues](https://github.com/denysvitali/linux-on-pixel-c/issues)! The more we are working on this project, the faster we could all enjoy the Linux experience on our tablets!
+
+### Don't have a Pixel C?
+You can still help us! We've got you covered: in the [dmesg](/dmesg/) folder we've put some dmesg outputs to help us find / spot some errors and fix some bugs. Take a look!
