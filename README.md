@@ -81,6 +81,8 @@ Don't put yourself in danger, we still need you.
 
 ### Extract the filesystem
 
+*NOTE: You may need this [busybox binary](https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-armv6l), personally I had some troubles when extracting `tar.gz` files with TWRP included busybox (returns "Killed" after some files extracted / has many segfaults). Therefore you may need to `adb push busybox-armv6l /cache; chmod u+x /cache/busybox-armv6l` and then call `/cache/busybox-armv6l tar -xvf ...` instead*
+
 1. Boot in TWRP
 2. `adb push arch-xfce-lightdm.tar.gz /data/`
 3. `cd /data`
