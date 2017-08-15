@@ -85,8 +85,9 @@ Don't put yourself in danger, we still need you.
 
 1. Boot in TWRP
 2. `adb push arch-xfce-lightdm.tar.gz /data/`
-3. `cd /data`
-4. `tar -xvf arch-xfce-lightdm.tar.gz`
+3. `adb shell` (gets a shell into the device)
+4. `cd /data`
+5. `tar -xvf arch-xfce-lightdm.tar.gz`
 
 ### From prebuilt images
 ~~Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing~~
