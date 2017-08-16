@@ -83,16 +83,32 @@ Don't put yourself in danger, we still need you.
 
 *NOTE: You may need this [busybox binary](https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-armv6l), personally I had some troubles when extracting `tar.gz` files with TWRP included busybox (returns "Killed" after some files extracted / has many segfaults). Therefore you may need to `adb push busybox-armv6l /cache; chmod u+x /cache/busybox-armv6l` and then call `/cache/busybox-armv6l tar -xvf ...` instead*
 
+#### Using /data partition
+*This is the default setup, all the [kernel releases](https://github.com/denysvitali/linux-smaug/releases) (boot images) are created assuming you want to boot from /data/Arch*
+
 1. Boot in TWRP
 2. `adb push arch-xfce-lightdm.tar.gz /data/`
 3. `adb shell` (gets a shell into the device)
 4. `cd /data`
 5. `tar -xvf arch-xfce-lightdm.tar.gz`
 
+#### Using /system partition
+*This is a different approach, it is useful because saves you the `/data` partition (in case you don't want to wipe it), but **the filesystem will be limited to 3.76GB** and you'll need a different initramfs (therefore you'll need a different prebuilt boot.img).*
+1. Boot in TWRP
+2. `adb push arch-xfce-lightdm.tar.gz /cache/`
+3. `adb shell` (gets a shell into the device)
+3. `mount -o rw /dev/block/mmcblk0p4 /system` (mounts `/system` in r/w)
+4. `rm -rf /system/*` (deletes the content of `/system`)
+5. `tar -xvf /cache/arch-xfce-lightdm.tar.gz -C /system` (extracts the FS to /system)
+
+Use [this](https://github.com/denysvitali/linux-smaug/releases/tag/be7289aa-system) boot.img. Be aware, it is unsigned, therefore you can only use it with `fastboot boot boot.img.unsigned`.
+
 ### From prebuilt images
 ~~Prebuilt boot.img images aren't available yet, but you can still boot the system by putting the Pixel C in fastboot mode and doing~~
 
-Prebuilt images are available [here](https://github.com/denysvitali/linux-smaug/releases), just flash the latest boot.img with the following command
+Prebuilt images are available [here](https://github.com/denysvitali/linux-smaug/releases), just flash the latest boot.img with the following command.
+
+***Note:** The images that use `/system` instead of `/data/Arch` are marked as `Pre-Release` and are labelled as such.* 
 ```
 fastboot flash boot boot.img
 fastboot boot boot.img
@@ -154,6 +170,7 @@ If your screen looks like this after booting the image, wonderful! It means that
 [GitHub: Mathieu's Ramdisk](https://github.com/Samt43/Smaug)  
 [GitHub: My Kernel for Smaug (4.13-RC4)](https://github.com/denysvitali/linux-smaug)  
 [GitHub: My initramfs](https://github.com/denysvitali/smaug-custom-initram)   
+[Pixel C partitions](https://docs.google.com/spreadsheets/d/1uxdTSz23kFRDXrezeAclMY9yy8ih9cbi6UFVOFrVXJ8/edit?usp=sharing)
 
 # Contributors
  - [Samt43](https://github.com/Samt43), original author of the project
