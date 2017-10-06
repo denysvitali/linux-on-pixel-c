@@ -13,6 +13,17 @@ This will give you a `zsh` shell, with some useful tools like `vbutil_*` and `fu
 ## 20171006_094326
 Boots:  
 **YES**  
+
+WiFi / BT:  
+**NOT WORKING**  
   
+Lightbar:  
+**NOT WORKING**
+
+GPU:  
+**NO ACCELERATION**  
+  
+[dmesg](https://github.com/denysvitali/linux-on-pixel-c/blob/master/dmesg/4.14-rc4_20171006_094829.md)
+
 Linux:  
 `Linux alarm 4.14.0-rc3+ #15 SMP PREEMPT Fri Oct 6 09:41:57 UTC 2017 aarch64 GNU/Linux`  
