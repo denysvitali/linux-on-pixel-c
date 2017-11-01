@@ -19,7 +19,7 @@ We are still in an early pre-alpha stage, the device boots with the latest kerne
 ### What are the issues right now?
 
  - Wi-Fi / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)
- - Graphics Acceleration doesn't work, everything is rendered by the CPU apparently
+ - ~~Graphics Acceleration doesn't work, everything is rendered by the CPU apparently~~
  - Sound doesn't work
  - There is no output until the device is booted
  - (Lightbar control isn't exposed on 4.13+, may be a config issue)
