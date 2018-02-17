@@ -64,17 +64,26 @@ Don't put yourself in danger, we still need you.
 
 ### Prepare the filesystem
 
-[Download here](https://ded1.denv.it/pixel-c/arch-xfce-lightdm.tar.gz) my custom-made filesystem (3GB), or set up your own using the [official ALARM rootfs](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz).
+Choose one of the following (the first one is strongly recommended):
+1. [Latest version of the RootFS](https://github.com/denysvitali/tegra-nouveau-rootfs/releases)
+2. My (OLD!) [custom made FS with xfce + lightdm](https://ded1.denv.it/pixel-c/arch-xfce-lightdm.tar.gz)
+3. The [Official ALARM rootfs](http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz)
 
 *Be aware that the official ALARM rootfs requires an USB Ethernet adapter since the Wireless connection to a "PixelC" hotspot isn't preconfigured. You will also need to configure your Desktop Manager and your Sessions, all without seeing anything on the screen.*
 
-#### Default login for my custom-made FS:
+#### Default login for the project's rootfs:
+  | Username | Password   |
+  |----------| ---------- |
+  | alarm    | alarm |
+  | root     | root |
+
+#### Default login for my custom-made FS (2):
 
   | Username | Password   |
   |----------| ---------- |
   | alarm    | pixelcalarm |
 
-#### Default login for the original ALARM rootfs:
+#### Default login for the original ALARM rootfs (3):
   | Username | Password   |
   |----------| ---------- |
   | alarm    | alarm |
