@@ -14,12 +14,12 @@ Unfortunately it runs Android, which doesn't seem to be really a productive / de
 At the moment, we've got [Arch Linux Arm](http://archlinuxarm.org/) to work on it. We haven't tried other distros yet, but PR are always welcome.
 
 ### What's the development status?
-We are still in an early pre-alpha stage, the device boots with the latest kernel (4.13-rc4) but has still many issues that makes it hard to use as a daily driver.
+We are still in an alpha stage, the device boots with the latest kernel (4.15-rc8) but has still many issues that makes it hard to use as a daily driver.
 
 ### What are the issues right now?
 
- - Wi-Fi / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)
- - ~~Graphics Acceleration doesn't work, everything is rendered by the CPU apparently~~
+ - ~~Wi-Fi~~ / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)
+ - Graphics Acceleration doesn't work, everything is rendered by the CPU apparently
  - Sound doesn't work
  - There is no output until the device is booted
  - (Lightbar control isn't exposed on 4.13+, may be a config issue)
@@ -38,16 +38,16 @@ You can follow the issues [here](https://github.com/denysvitali/linux-on-pixel-c
  - Network (Ethernet) via an USB dongle (Pretty much USB-Ethernet dongle)
  - Network (Wi-Fi) via an USB dongle (Mediatek 7601u)
  - Lightbar (with 4.12-rc2)
+ - Wi-Fi (BT still doesn't work, [check this issue](https://github.com/denysvitali/linux-on-pixel-c/issues/10))
 
 ## Prerequisites
 
  - Google Pixel C (2015)
+ 
+ ### Nice to have
  - USB Type-C HUB (I'm personally using [this](https://www.amazon.com/HooToo-Adapter-Charging-MacBook-Chromebook/dp/B01K7C53K2))
- - USB Wi-Fi Adapter (only a few are supported, I personally use [this](http://www.ebay.com/itm/150Mbps-Mini-USB-WiFi-Wireless-Adapter-Dongle-Network-LAN-Card-802-11n-g-b-PC-/252404008603) one) or:
+ - USB Wi-Fi Adapter (only a few are supported, I personally use [this](http://www.ebay.com/itm/150Mbps-Mini-USB-WiFi-Wireless-Adapter-Dongle-Network-LAN-Card-802-11n-g-b-PC-/252404008603) one)
  - USB Ethernet Adapter (any model should work)
-
-### Using an USB Wi-FI adapter
-Create an AP named 'Pixel C', and use 'WiFiPixelC' as a password. Then boot the Pixel C and wait till it connects to your Wi-Fi network.
 
 ### Using an USB Ethernet adapter
 Plug the ethernet cable, then plug the USB Ethernet adapter to your Pixel C. As soon as the adapter is detected, the Pixel C (if it booted correctly) will get an IP address via DHCP.
@@ -59,7 +59,7 @@ Use the IP to log-in
 If you are not sure about a modification you've made, keep the device monitored.
 Don't put yourself in danger, we still need you.
 
-**WARNING:** you need dm-verity and encryption OFF, or a newly formatted `/data` partion. Otherwise the system won't be able to boot into Linux.
+**WARNING:** If you're going to put your rootfs in `/data/` you need dm-verity and encryption OFF, or a newly formatted `/data` partion. Otherwise the system won't be able to boot into Linux. You can still put the rootfs in `/system` to avoid formatting the `/data` partition.
 
 
 ### Prepare the filesystem
