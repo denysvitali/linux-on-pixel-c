@@ -10,19 +10,24 @@ It didn't had much success apparently, but its hardware is definitively still a 
 
 Unfortunately it runs Android, which doesn't seem to be really a productive / development oriented operating system, therefore we decided to port a Linux distro to it, to make it more productive and fast.
 
-### What distro are currently supported?
-At the moment, we've got [Arch Linux Arm](http://archlinuxarm.org/) to work on it. We haven't tried other distros yet, but PR are always welcome.
+### What distro are currently supported / planned?
+
+#### Arch Linux ARM
+Right now we've got [Arch Linux Arm](http://archlinuxarm.org/) to work on the device. We haven't tried other distros yet, but PR are always welcome.  
+
+#### Void Linux
+[@q66](https://github.com/q66) is planning a port of [Void Linux](https://www.voidlinux.eu/).
 
 ### What's the development status?
-We are still in an alpha stage, the device boots with the latest kernel (4.15-rc8) but has still many issues that makes it hard to use as a daily driver.
+We are still in an alpha stage, the device boots with the latest kernel (4.17-rc2 as of 2018-05-04) but has still ~~many~~ a couple of issues that makes it hard to use as a daily driver.
 
 ### What are the issues right now?
 
- - ~~Wi-Fi~~ / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)
- - Graphics Acceleration doesn't work, everything is rendered by the CPU apparently
- - Sound doesn't work
- - (Lightbar control isn't exposed on 4.13+, may be a config issue)
- - Pixel C Keyboard doesn't work (need BT LE, which is provided by bcm4354)
+ - ~~Wi-Fi / Bluetooth chip doesn't work (Broadcom 4354 / bcm4354)~~
+ - ~~Pixel C Keyboard doesn't work (need BT LE, which is provided by bcm4354)~~
+ - [Graphics Acceleration doesn't work](https://github.com/denysvitali/linux-on-pixel-c/issues/2), everything is rendered by the CPU apparently
+ - [Sound doesn't work](https://github.com/denysvitali/linux-on-pixel-c/issues/4)
+ - Lightbar (works on some kernel versions, a commit need to be cherry-picked. Quick fix is incoming.)
 
 You can follow the issues [here](https://github.com/denysvitali/linux-on-pixel-c/issues): if you happen to know how to solve one of these problems, please help us! Even the smallest comment may bring us one step forward.
 
@@ -34,7 +39,14 @@ You can follow the issues [here](https://github.com/denysvitali/linux-on-pixel-c
  - Network (Ethernet) via an USB dongle (Pretty much USB-Ethernet dongle)
  - Network (Wi-Fi) via an USB dongle (Mediatek 7601u)
  - Lightbar (with 4.12-rc2)
- - Wi-Fi (BT still doesn't work, [check this issue](https://github.com/denysvitali/linux-on-pixel-c/issues/10))
+ - Wi-Fi ~~(BT still doesn't work, [check this issue](https://github.com/denysvitali/linux-on-pixel-c/issues/10))~~
+ - Wi-Fi via BCM4354 (Wi-Fi + BT Chip)
+ - [Bluetooth](https://github.com/denysvitali/linux-on-pixel-c/issues/10)
+ (and the Pixel C BT keyboard) via BCM4354 (Wi-Fi + BT Chip)
+
+### How can I get in touch with the team?
+We have a [Telegram Group](https://t.me/pixelclinux) and an IRC channel on freenode (`#linux-on-pixel-c`). Joining on the group or the channel is the same - the chats are linked together.
+
 
 ## Prerequisites
 
@@ -146,7 +158,7 @@ make -j$(nproc)
 wget https://ded1.denv.it/pixel-c/ramdisk.gz -O /kernel/ramdisk.gz
 ```
 
-For the last command, you can use your own ramdisk, or compile it from my [source]().
+For the last command, you can use your own ramdisk, or compile it from my [source](https://github.com/denysvitali/smaug-custom-initram).
 
 ### Mounting the kernel dir
 Mount the `kernel` dir in your home:
@@ -179,6 +191,7 @@ If your screen looks like this after booting the image, wonderful! It means that
 
 # Contributors
  - [Samt43](https://github.com/Samt43), original author of the project
+ - [Vartom](https://github.com/vartom)
 
 # Support the project
 ## Donate to the major contributors of this project
