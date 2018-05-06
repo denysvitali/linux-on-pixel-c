@@ -195,8 +195,9 @@ If your screen looks like this after booting the image, wonderful! It means that
 
 # Support the project
 ## Donate to the major contributors of this project
- - [Donate to Mathieu Tournier, aka Samt434](http://paypal.me/MathieuTournier)
- - [Donate to Denys Vitali, aka denvit](http://paypal.me/denvit)
+ - [Donate to Mathieu Tournier, aka Samt434](https://paypal.me/MathieuTournier)
+ - [Donate to Denys Vitali, aka denvit](https://paypal.me/denvit)
+ - [Donate to Dmitry Vartom, aka vartom](https://paypal.me/vartom)
 
 ## Don't like to donate money to strangers?
 Donate some money to the [Linux Foundation](https://www.linuxfoundation.org/about/linux-donate) or the [EFF](https://supporters.eff.org/donate).
