@@ -3,6 +3,13 @@ This repo aims at documenting how to run GNU/Linux on a [Google Pixel C](https:/
 
 ![Pixel C running Arch Linux ARM](/images/intro.jpg)
 
+---
+
+# !!! WARNING !!! : The repo is now moved [here](https://github.com/pixelc-linux/documentation)
+
+
+---
+
 ## Introduction
 ### What is the Google Pixel C?
 The Pixel C is a 10.2 inch Android tablet, made by Google, which was released on December 8, 2015.
